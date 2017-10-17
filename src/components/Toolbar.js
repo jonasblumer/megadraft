@@ -8,7 +8,7 @@ import React, {Component} from "react";
 import {EditorState, RichUtils} from "draft-js";
 import classNames from "classnames";
 import ToolbarItem from "./ToolbarItem";
-import {getSelectionCoords} from "../utils";
+import {getSelectionCoords, delayCall} from "../utils";
 
 
 export default class Toolbar extends Component {
@@ -31,6 +31,7 @@ export default class Toolbar extends Component {
     };
     this.renderButton = ::this.renderButton;
     this.cancelEntity = ::this.cancelEntity;
+    this.setBarPosition = delayCall(::this.setBarPosition);
     this.removeEntity = ::this.removeEntity;
     this.setError = ::this.setError;
     this.cancelError = ::this.cancelError;
